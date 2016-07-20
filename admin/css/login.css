@@ -1,0 +1,9 @@
+body{
+    background: url(../images/b1.png);
+	background-color: #444;
+    background: url(../images/b2.png),url(../images/b2.png),url(../images/b1.png);
+}
+
+.vertical-offset-100{
+    padding-top:100px;
+}

@@ -91,7 +91,7 @@ if(!isset($_SESSION['username']))
                             <li><a href="#" id="menu_kecamatan"><span class="glyphicon glyphicon-map-marker"></span> Kecamatan</a></li>
                             <li><a href="#" id="menu_desa"><span class="glyphicon glyphicon-map-marker"></span> Desa</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-duplicate"></span> Berkas</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Loker</a></li>
+                            <li><a href="#" id="menu_loker"><span class="glyphicon glyphicon-briefcase"></span> Loker</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Pengguna</a></li>
                             <!-- Dropdown-->
                             <li class="panel panel-default" id="dropdown">
@@ -155,6 +155,11 @@ if(!isset($_SESSION['username']))
         $("#menu_desa").click(function(){
             $("#konten").load('desa.php');
             $.getScript("js/desa.js");
+        });
+
+        $("#menu_loker").click(function(){
+            $("#konten").load('loker.php');
+            $.getScript("js/loker.js");
         });
 
     });

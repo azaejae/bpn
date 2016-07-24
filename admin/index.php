@@ -24,6 +24,8 @@ if(!isset($_SESSION['username']))
     <link href="css/simpleadmin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/r-2.1.0/sc-1.4.2/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,6 +33,15 @@ if(!isset($_SESSION['username']))
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .ui-autocomplete {
+            z-index: 5000;
+            max-height: 100px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -132,6 +143,7 @@ if(!isset($_SESSION['username']))
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/r-2.1.0/sc-1.4.2/datatables.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/simpleadmin.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script>
     $(document).ready(function(){
 

@@ -23,6 +23,11 @@ if(isset($_GET['menu']))
         $kecamatan->setValue($_POST['kode'],$_POST['nama_kecamatan']);
         $kecamatan->tambahKecamatan();
     }
+    elseif($_GET['menu']=='daftar_kec')
+    {
+        $kec= new kecamatan();
+        $kec->getKecamatanByNama();
+    }
     else
     {
         echo "error, menu tidak ditemukan";

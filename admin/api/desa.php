@@ -2,7 +2,7 @@
 session_start();
 require('class/desa.php');
 
-$kecamatan= new desa();
+$desa= new desa();
 
 if(isset($_GET['menu']))
 {
@@ -10,13 +10,18 @@ if(isset($_GET['menu']))
     {
         if (isset($_GET['id_desa_kel']))
         {
-            $kecamatan->getDesaKel($_GET['id_desa_kel']);
+            $desa->getDesaKel($_GET['id_desa_kel']);
         }
         else
         {
-            $kecamatan->getDesaKel();
+            $desa->getDesaKel();
         }
 
+    }
+    elseif($_GET['menu']=='tambah_desa')
+    {
+        $desa->setValue($_POST['id_kecamatan'],$_POST['kode'],$_POST['nama_desa']);
+        $desa->tambahDesa();
     }
     else
     {

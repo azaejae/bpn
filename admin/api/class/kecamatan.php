@@ -79,9 +79,26 @@ class kecamatan
         }
     }
 
-    public function getKecamatanByNama($key)
+    public function getKecamatanByNama()
     {
+        $sql="select nama_kecamatan as label,id_kecamatan FROM kecamatan";
+        if(isset($_GET['term']))
+        {
+            $nama_kec=$_GET['term'];
+            $sql = "select nama_kecamatan as label,id_kecamatan FROM kecamatan WHERE nama_kecamatan LIKE '%$nama_kec%'";
+        }
+        try{
 
+            $hasil=$this->_db->query($sql);
+            $data=$hasil->fetchAll(PDO::FETCH_ASSOC);
+            //$data=array('data'=>$data);
+            echo json_encode($data);
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'gagal','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
     }
 
 

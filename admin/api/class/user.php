@@ -66,8 +66,65 @@ class user
         }
     }
 
-    public function tambahUser($username,$password,$status=2,$nama)
+    public function tambahUser()
     {
+        $sql="INSERT INTO user(nip,password,status,nama_lengkap) VALUES (:nip,:password,:status,:nama_lengkap)";
+
+        try
+        {
+            $ex=$this->_db->prepare($sql);
+            $ex->execute(array('nip'=>$this->_nip,'password'=>$this->_password,'status'=>$this->_status,'nama_lengkap'=>$this->_nama_lengkap));
+            $hasil=array('status'=>'berhasil','pesan'=>'Pengguna berhasil ditambahkan');
+            echo json_encode($hasil);
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('status'=>'gagal','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+
+        }
+    }
+
+    public function  getNamaUser($nip=null)
+    {
+        if($nip==null)
+        {
+            $sql='SELECT nip,nama_lengkap,status FROM user';
+        }
+        else
+        {
+            $sql='SELECT nip,nama_lengkap,status FROM user WHERE nip = :nip';
+        }
+
+
+        try
+        {
+            $exe=$this->_db->prepare($sql);
+            if($nip==null)
+            {
+                $exe->execute();
+            }
+            else
+            {
+                $exe->execute(array('nip'=>$nip));
+            }
+            $data=$exe->fetchAll(PDO::FETCH_ASSOC);
+            if($exe->rowCount()>0)
+            {
+                $hasil=array('data'=>$data);
+                echo json_encode($hasil);
+            }
+            else
+            {
+                $pesan=array('hasil'=>'gagal','pesan'=>'Data Tidak ditemukan');
+                echo json_encode($pesan);
+            }
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'error','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
 
     }
 

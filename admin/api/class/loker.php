@@ -78,4 +78,22 @@ class loker{
             echo json_encode($hasil);
         }
     }
+
+    public function ubahLoker($id_loker,$kode,$keterangan)
+    {
+        $sql='UPDATE loker SET kode_loker=:kode_loker,keterangan=:keterangan WHERE id_loker=:id_loker';
+        try
+        {
+            $ex=$this->_db->prepare($sql);
+            $ex->execute(array('kode_loker'=>$kode,'keterangan'=>$keterangan,"id_loker"=>$id_loker));
+            $hasil=array('status'=>'berhasil','pesan'=>'Loker berhasil diubah');
+            echo json_encode($hasil);
+
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'gagal','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+    }
 }

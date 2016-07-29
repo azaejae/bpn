@@ -101,5 +101,23 @@ class kecamatan
         }
     }
 
+    public function updateKecamatan($id,$kode,$nama)
+    {
+        $sql='UPDATE kecamatan SET kode=:kode,nama_kecamatan=:nama_kec WHERE id_kecamatan=:id_kec';
+        try
+        {
+            $ex=$this->_db->prepare($sql);
+            $ex->execute(array('kode'=>$kode,'nama_kec'=>$nama,"id_kec"=>$id));
+            $hasil=array('status'=>'berhasil','pesan'=>'Kecamatan berhasil diubah');
+            echo json_encode($hasil);
+
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'gagal','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+    }
+
 
 }

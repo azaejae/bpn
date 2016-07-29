@@ -22,6 +22,14 @@ if(isset($_GET['menu']))
         $loker->setValue($_POST['kode'],$_POST['keterangan']);
         $loker->tambahLoker();
     }
+    elseif($_GET['menu']=='ubahloker')
+    {
+        $loker->ubahLoker($_POST['id_loker'],$_POST['kode'],$_POST['keterangan']);
+    }
+    else
+    {
+        echo "error, menu tidak ditemukan";
+    }
 
 }
 else

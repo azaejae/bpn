@@ -5,6 +5,7 @@ $.getJSON("api/loker.php",{menu : "getloker"})
                 "<td>"+hasil.id_loker+"</td>"+
                 "<td>"+hasil.kode_loker+"</td>"+
                 "<td>"+hasil.keterangan+"</td>"+
+                "<td><a href='#' onclick='editLoker(\""+hasil.keterangan+"\",\""+hasil.kode_loker+"\","+hasil.id_loker+")' ><span class='glyphicon glyphicon-edit')></span></a></td>"+
                 "</tr>");
 
         });
@@ -42,4 +43,42 @@ $('#f_tambah_loker').submit(function(){
         $(location).attr('href','index.php');
     });
     return false;
+});
+
+function editLoker(keterangan,kode,id)
+{
+    $("#konten").load('tambah_loker.php', function() {
+        $("#kode").val(kode);
+        $("#keterangan").val(keterangan);
+        $("#id_loker").val(id);
+        $("#tambah_loker").hide();
+        $("#ubah_loker").show();
+        $.getScript("js/loker.js");
+    });
+
+}
+
+$("#ubah_loker").click(function(){
+    var host='api/loker.php?menu=ubahloker'
+    $.ajax({
+        url : host,
+        type: "POST",
+        data : $('form#f_tambah_loker').serialize(),
+        dataType: "JSON",
+        success: function(respon)
+        {
+            if(respon.hasil==='berhasil')
+            {
+                alert(respon.pesan)
+
+            }
+            else
+            {
+                alert(respon.pesan);
+            }
+        }
+    }).done(function(){
+        $(location).attr('href','index.php');
+    });
+   return false;
 });

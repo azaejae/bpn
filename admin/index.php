@@ -90,9 +90,9 @@ if(!isset($_SESSION['username']))
                             <li class="active"><a href="index.php"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
                             <li><a href="#" id="menu_kecamatan"><span class="glyphicon glyphicon-map-marker"></span> Kecamatan</a></li>
                             <li><a href="#" id="menu_desa"><span class="glyphicon glyphicon-map-marker"></span> Desa</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-duplicate"></span> Berkas</a></li>
+                            <li><a href="#" id="menu_berkas"><span class="glyphicon glyphicon-duplicate"></span> Berkas</a></li>
                             <li><a href="#" id="menu_loker"><span class="glyphicon glyphicon-briefcase"></span> Loker</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Pengguna</a></li>
+                            <li><a href="#" id="menu_pengguna"><span class="glyphicon glyphicon-user"></span> Pengguna</a></li>
                             <!-- Dropdown-->
                             <li class="panel panel-default" id="dropdown">
                                 <a data-toggle="collapse" href="#dropdown-lvl1">
@@ -160,6 +160,16 @@ if(!isset($_SESSION['username']))
         $("#menu_loker").click(function(){
             $("#konten").load('loker.php');
             $.getScript("js/loker.js");
+        });
+
+        $("#menu_pengguna").click(function(){
+            $("#konten").load('user.php');
+            $.getScript("js/user.js");
+        });
+
+        $("#menu_berkas").click(function(){
+            $("#konten").load('berkas.php');
+            $.getScript("js/berkas.js");
         });
 
     });

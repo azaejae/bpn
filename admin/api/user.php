@@ -14,7 +14,13 @@ elseif($_GET['menu']=='login')
 }
 elseif($_GET['menu']=='tambahuser')
 {
+    $user->setValue($_POST['nip'],$_POST['password'],$_POST['nama_lengkap'],$_POST['status']);
+    $user->tambahUser();
 
+}
+elseif($_GET['menu']=='daftaruser')
+{
+    $user->getNamaUser();
 }
 else
 {

@@ -5,6 +5,7 @@
         <th>ID</th>
         <th>Kode</th>
         <th>Nama Kecamatan</th>
+        <th>Opsi</th>
     </tr>
     </thead>
     <tbody>

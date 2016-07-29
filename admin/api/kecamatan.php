@@ -28,6 +28,10 @@ if(isset($_GET['menu']))
         $kec= new kecamatan();
         $kec->getKecamatanByNama();
     }
+    elseif($_GET['menu']=='ubah_kecamatan')
+    {
+        $kecamatan->updateKecamatan($_POST['id_kecamatan'],$_POST['kode'],$_POST['nama_kecamatan']);
+    }
     else
     {
         echo "error, menu tidak ditemukan";

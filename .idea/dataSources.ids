@@ -16,260 +16,286 @@
       <table id="7" parent="1" name="peminjaman"/>
       <table id="8" parent="1" name="pengembalian"/>
       <table id="9" parent="1" name="user"/>
-      <column id="10" parent="2" name="id_berkas">
+      <view id="10" parent="1" name="v_desa_kecamatan"/>
+      <column id="11" parent="2" name="id_berkas">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="11" parent="2" name="no_buku">
+      <column id="12" parent="2" name="no_buku">
         <mandatory>1</mandatory>
         <data-type>char(20)</data-type>
       </column>
-      <column id="12" parent="2" name="keterangan">
+      <column id="13" parent="2" name="keterangan">
         <mandatory>1</mandatory>
         <data-type>varchar(500)</data-type>
       </column>
-      <column id="13" parent="2" name="lokasi">
+      <column id="14" parent="2" name="lokasi">
         <mandatory>1</mandatory>
         <data-type>varchar(500)</data-type>
       </column>
-      <key id="14" parent="2" name="PRIMARY">
+      <key id="15" parent="2" name="PRIMARY">
         <columns>id_berkas</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="15" parent="2" name="FK_berkas">
+      <foreign-key id="16" parent="2" name="FK_berkas">
         <columns>no_buku</columns>
         <ref-key>buku_tanah.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="16" parent="3" name="no_buku">
+      <column id="17" parent="3" name="no_buku">
         <mandatory>1</mandatory>
         <data-type>char(20)</data-type>
       </column>
-      <column id="17" parent="3" name="barcode">
+      <column id="18" parent="3" name="barcode">
         <mandatory>1</mandatory>
         <data-type>varchar(15)</data-type>
       </column>
-      <column id="18" parent="3" name="id_desa_kel">
+      <column id="19" parent="3" name="id_desa_kel">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="19" parent="3" name="id_loker">
+      <column id="20" parent="3" name="id_loker">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="20" parent="3" name="asal_hak">
+      <column id="21" parent="3" name="asal_hak">
         <mandatory>1</mandatory>
         <data-type>varchar(500)</data-type>
       </column>
-      <column id="21" parent="3" name="nama_pemegang_hak">
+      <column id="22" parent="3" name="nama_pemegang_hak">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="22" parent="3" name="jenis_hak">
-        <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
-      </column>
-      <column id="23" parent="3" name="nomor_hak">
-        <mandatory>1</mandatory>
-        <data-type>varchar(5)</data-type>
-      </column>
-      <column id="24" parent="3" name="d_i_307">
-        <mandatory>1</mandatory>
-        <data-type>varchar(20)</data-type>
-      </column>
-      <column id="25" parent="3" name="d_i_208">
-        <mandatory>1</mandatory>
-        <data-type>varchar(20)</data-type>
-      </column>
-      <column id="26" parent="3" name="surat_ukur">
-        <mandatory>1</mandatory>
-        <data-type>varchar(10)</data-type>
-      </column>
-      <column id="27" parent="3" name="tgl_surat_ukur">
-        <mandatory>1</mandatory>
-        <data-type>date</data-type>
-      </column>
-      <column id="28" parent="3" name="luas">
-        <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
-      </column>
-      <column id="29" parent="3" name="tgl_terbit">
-        <mandatory>1</mandatory>
-        <data-type>date</data-type>
-      </column>
-      <column id="30" parent="3" name="penerbit">
+      <column id="23" parent="3" name="jenis_hak">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="31" parent="3" name="penunjuk">
+      <column id="24" parent="3" name="nomor_hak">
         <mandatory>1</mandatory>
-        <data-type>varchar(700)</data-type>
+        <data-type>varchar(5)</data-type>
       </column>
-      <column id="32" parent="3" name="status_pinjam">
+      <column id="25" parent="3" name="d_i_307">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="26" parent="3" name="d_i_208">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="27" parent="3" name="surat_ukur">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="28" parent="3" name="tgl_surat_ukur">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="29" parent="3" name="luas">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <key id="33" parent="3" name="PRIMARY">
+      <column id="30" parent="3" name="tgl_terbit">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="31" parent="3" name="penerbit">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="32" parent="3" name="penunjuk">
+        <mandatory>1</mandatory>
+        <data-type>varchar(700)</data-type>
+      </column>
+      <column id="33" parent="3" name="status_pinjam">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="34" parent="3" name="PRIMARY">
         <columns>no_buku</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="34" parent="3" name="FK_lokasi_desa">
+      <foreign-key id="35" parent="3" name="FK_lokasi_desa">
         <columns>id_desa_kel</columns>
         <ref-key>desa_kelurahan.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="35" parent="3" name="FK_loker_penyimpanan">
+      <foreign-key id="36" parent="3" name="FK_loker_penyimpanan">
         <columns>id_loker</columns>
         <ref-key>loker.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="36" parent="4" name="id_desa_kel">
+      <column id="37" parent="4" name="id_desa_kel">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="37" parent="4" name="id_kecamatan">
+      <column id="38" parent="4" name="id_kecamatan">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="38" parent="4" name="kode">
+      <column id="39" parent="4" name="kode">
         <mandatory>1</mandatory>
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="39" parent="4" name="nama_desa_kel">
+      <column id="40" parent="4" name="nama_desa_kel">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <key id="40" parent="4" name="PRIMARY">
+      <key id="41" parent="4" name="PRIMARY">
         <columns>id_desa_kel</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="41" parent="4" name="FK_lokasi_kecamatan">
+      <foreign-key id="42" parent="4" name="FK_lokasi_kecamatan">
         <columns>id_kecamatan</columns>
         <ref-key>kecamatan.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="42" parent="5" name="id_kecamatan">
+      <column id="43" parent="5" name="id_kecamatan">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="43" parent="5" name="kode">
+      <column id="44" parent="5" name="kode">
         <mandatory>1</mandatory>
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="44" parent="5" name="nama_kecamatan">
+      <column id="45" parent="5" name="nama_kecamatan">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <key id="45" parent="5" name="PRIMARY">
+      <key id="46" parent="5" name="PRIMARY">
         <columns>id_kecamatan</columns>
         <primary>1</primary>
       </key>
-      <column id="46" parent="6" name="id_loker">
+      <column id="47" parent="6" name="id_loker">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="47" parent="6" name="kode_loker">
+      <column id="48" parent="6" name="kode_loker">
         <mandatory>1</mandatory>
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="48" parent="6" name="keterangan">
+      <column id="49" parent="6" name="keterangan">
         <mandatory>1</mandatory>
         <data-type>varchar(300)</data-type>
       </column>
-      <key id="49" parent="6" name="PRIMARY">
+      <key id="50" parent="6" name="PRIMARY">
         <columns>id_loker</columns>
         <primary>1</primary>
       </key>
-      <column id="50" parent="7" name="id_peminjaman">
+      <column id="51" parent="7" name="id_peminjaman">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="51" parent="7" name="no_buku">
+      <column id="52" parent="7" name="no_buku">
         <mandatory>1</mandatory>
         <data-type>char(20)</data-type>
       </column>
-      <column id="52" parent="7" name="nip">
+      <column id="53" parent="7" name="nip">
         <mandatory>1</mandatory>
         <data-type>varchar(30)</data-type>
       </column>
-      <column id="53" parent="7" name="status_peminjaman">
+      <column id="54" parent="7" name="status_peminjaman">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="54" parent="7" name="tgl_pinjam">
+      <column id="55" parent="7" name="tgl_pinjam">
         <mandatory>1</mandatory>
         <data-type>date</data-type>
       </column>
-      <column id="55" parent="7" name="proses">
+      <column id="56" parent="7" name="proses">
         <mandatory>1</mandatory>
         <data-type>varchar(500)</data-type>
       </column>
-      <column id="56" parent="7" name="keterangan">
+      <column id="57" parent="7" name="keterangan">
         <mandatory>1</mandatory>
         <data-type>varchar(500)</data-type>
       </column>
-      <key id="57" parent="7" name="PRIMARY">
+      <key id="58" parent="7" name="PRIMARY">
         <columns>id_peminjaman</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="58" parent="7" name="FK_buku_dipinjam">
+      <foreign-key id="59" parent="7" name="FK_buku_dipinjam">
         <columns>no_buku</columns>
         <ref-key>buku_tanah.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="59" parent="7" name="FK_peminjam_buku">
+      <foreign-key id="60" parent="7" name="FK_peminjam_buku">
         <columns>nip</columns>
         <ref-key>user.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="60" parent="8" name="id_pengembalian">
+      <column id="61" parent="8" name="id_pengembalian">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="61" parent="8" name="id_peminjaman">
+      <column id="62" parent="8" name="id_peminjaman">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="62" parent="8" name="tanggal_pengembalian">
+      <column id="63" parent="8" name="tanggal_pengembalian">
         <mandatory>1</mandatory>
         <data-type>date</data-type>
       </column>
-      <key id="63" parent="8" name="PRIMARY">
+      <key id="64" parent="8" name="PRIMARY">
         <columns>id_pengembalian</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="64" parent="8" name="FK_pengembalian_buku">
+      <foreign-key id="65" parent="8" name="FK_pengembalian_buku">
         <columns>id_peminjaman</columns>
         <ref-key>peminjaman.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="65" parent="9" name="nip">
+      <column id="66" parent="9" name="nip">
         <mandatory>1</mandatory>
         <data-type>varchar(30)</data-type>
       </column>
-      <column id="66" parent="9" name="password">
+      <column id="67" parent="9" name="password">
         <mandatory>1</mandatory>
         <data-type>char(64)</data-type>
       </column>
-      <column id="67" parent="9" name="status">
+      <column id="68" parent="9" name="status">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="68" parent="9" name="nama_lengkap">
+      <column id="69" parent="9" name="nama_lengkap">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <key id="69" parent="9" name="PRIMARY">
+      <key id="70" parent="9" name="PRIMARY">
         <columns>nip</columns>
         <primary>1</primary>
       </key>
+      <column id="71" parent="10" name="id_desa_kel">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="72" parent="10" name="id_kecamatan">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="73" parent="10" name="kode_desa">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="74" parent="10" name="nama_desa_kel">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="75" parent="10" name="kode">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="76" parent="10" name="nama_kecamatan">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
     </database-model>
   </data-source>
 </component>

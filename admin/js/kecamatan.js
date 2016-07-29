@@ -5,6 +5,7 @@ $.getJSON("api/kecamatan.php",{menu : "getnamakecamatan"})
             "<td>"+hasil.id_kecamatan+"</td>"+
             "<td>"+hasil.kode+"</td>"+
             "<td>"+hasil.nama_kecamatan+"</td>"+
+            "<td><a href='#' onclick='editKecamatan(\""+hasil.nama_kecamatan+"\",\""+hasil.kode+"\","+hasil.id_kecamatan+")' ><span class='glyphicon glyphicon-edit')></span></a></td>"+
             "</tr>");
 
     });
@@ -21,6 +22,46 @@ $("#tambah_kecamatan").click(function(){
 
 $('#f_tambah_kecamatan').submit(function(){
     var host='api/kecamatan.php?menu=tambah_kecamatan'
+    $.ajax({
+        url : host,
+        type: "POST",
+        data : $('form#f_tambah_kecamatan').serialize(),
+        dataType: "JSON",
+        success: function(respon)
+        {
+            if(respon.hasil==='berhasil')
+            {
+                alert(respon.pesan)
+
+            }
+            else
+            {
+                alert(respon.pesan);
+            }
+        }
+    }).done(function(){
+        $(location).attr('href','index.php');
+    });
+    return false;
+});
+
+function editKecamatan(nama,kode,id_kec)
+{
+    $("#konten").load('tambah_kecamatan.php', function()
+    {
+        $("#kode").val(kode);
+        $("#nama_kecamatan").val(nama);
+        $("#id_kecamatan").val(id_kec);
+        $("#tambah_kecamatan").hide();
+        $("#ubah_kecamatan").show();
+        $.getScript("js/kecamatan.js");
+    });
+
+
+}
+
+$("#ubah_kecamatan").click(function(){
+    var host='api/kecamatan.php?menu=ubah_kecamatan'
     $.ajax({
         url : host,
         type: "POST",

@@ -6,6 +6,7 @@ $.getJSON("api/desa.php",{menu : "getnamadesa"})
                 "<td>"+hasil.kode_desa+"</td>"+
                 "<td>"+hasil.nama_desa_kel+"</td>"+
                 "<td>"+hasil.nama_kecamatan+"</td>"+
+                "<td><a href='#' onclick='editDesa("+hasil.id_desa_kel+",\""+hasil.kode_desa+"\","+hasil.id_kecamatan+",\""+hasil.nama_desa_kel+"\",\""+hasil.nama_kecamatan+"\")' ><span class='glyphicon glyphicon-edit')></span></a></td>"+
                 "</tr>");
 
         });
@@ -66,4 +67,25 @@ $('#f_tambah_desa').submit(function(){
         $(location).attr('href','index.php');
     });
     return false;
+});
+
+
+function editDesa(id_desa,kode_desa,id_kecamatan,nama_desa,nama_kecamatan)
+{
+    $("#konten").load('tambah_desa.php', function()
+    {
+        $("#kode").val(kode_desa);
+        $("#nama_kec").val(nama_kecamatan);
+        $("#id_kec").val(id_kecamatan);
+        $("#nama_desa").val(nama_desa);
+        $("#id_desa").val(id_desa);
+        $("#tambah_desa").hide();
+        $("#ubah_desa").show();
+        $.getScript("js/desa.js");
+    });
+}
+
+$("#ubah_desa").click(function(){
+    alert("jalan");
+   return false;
 });

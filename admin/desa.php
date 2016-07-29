@@ -6,6 +6,7 @@
         <th>Kode</th>
         <th>Nama Desa</th>
         <th>Nama Kecamatan</th>
+        <th>Opsi</th>
     </tr>
     </thead>
     <tbody>

@@ -23,7 +23,7 @@ class desa
 
     public function tambahDesa()
     {
-        $sql="INSERT INTO desa_kelurahan(id_kecamatan,kode,nama_desa_kel) VALUES (:id_kecamatan,:kode,:nama_desa_kel)";
+        $sql='INSERT INTO desa_kelurahan(id_kecamatan,kode,nama_desa_kel) VALUES (:id_kecamatan,:kode,:nama_desa_kel)';
         try
         {
             $ex=$this->_db->prepare($sql);
@@ -76,6 +76,24 @@ class desa
         catch(PDOException $e)
         {
             $hasil=array('hasil'=>'error','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+    }
+
+    public function updateDesa($id_desa,$id_kec,$kode_desa,$nama_desa)
+    {
+        $sql='UPDATE desa_kelurahan SET id_kecamatan=:id_kec,kode=:kode_desa,nama_desa_kel=:nama_desa WHERE id_desa_kel=:id_desa';
+        try
+        {
+            $ex=$this->_db->prepare($sql);
+            $ex->execute(array('id_kec'=>$id_kec,'kode_desa'=>$kode_desa,"nama_desa"=>$nama_desa,'id_desa'=>$id_desa));
+            $hasil=array('status'=>'berhasil','pesan'=>'Desa berhasil diubah');
+            echo json_encode($hasil);
+
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'gagal','pesan'=>$e->getMessage());
             echo json_encode($hasil);
         }
     }

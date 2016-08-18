@@ -86,6 +86,26 @@ function editDesa(id_desa,kode_desa,id_kecamatan,nama_desa,nama_kecamatan)
 }
 
 $("#ubah_desa").click(function(){
-    alert("jalan");
-   return false;
+    var host='api/desa.php?menu=update_desa'
+    $.ajax({
+        url : host,
+        type: "POST",
+        data : $('form#f_tambah_desa').serialize(),
+        dataType: "JSON",
+        success: function(respon)
+        {
+            if(respon.hasil==='berhasil')
+            {
+                alert(respon.pesan)
+
+            }
+            else
+            {
+                alert(respon.pesan);
+            }
+        }
+    }).done(function(){
+        $(location).attr('href','index.php');
+    });
+    return false;
 });

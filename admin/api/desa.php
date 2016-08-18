@@ -23,6 +23,10 @@ if(isset($_GET['menu']))
         $desa->setValue($_POST['id_kecamatan'],$_POST['kode'],$_POST['nama_desa']);
         $desa->tambahDesa();
     }
+    elseif($_GET['menu']=='update_desa')
+    {
+        $desa->updateDesa($_POST['id_desa'],$_POST['id_kecamatan'],$_POST['kode'],$_POST['nama_desa']);
+    }
     else
     {
         echo "error, menu tidak ditemukan";

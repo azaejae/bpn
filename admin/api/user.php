@@ -18,6 +18,10 @@ elseif($_GET['menu']=='tambahuser')
     $user->tambahUser();
 
 }
+elseif($_GET['menu']=='hapususer')
+{
+    $user->hapusUser($_POST['nip']);
+}
 elseif($_GET['menu']=='daftaruser')
 {
     $user->getNamaUser();

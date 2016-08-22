@@ -14,11 +14,12 @@ $.getJSON("api/user.php",{menu : "daftaruser"})
                 "<td>"+hasil.nip+"</td>"+
                 "<td>"+hasil.nama_lengkap+"</td>"+
                 "<td>"+a+"</td>"+
+                "<td><a href='#' onclick='hapusUser(\""+hasil.nip+"\")' title='Hapus Pengguna' ><span class='glyphicon glyphicon-remove')></span></a></td>"+
                 "</tr>");
 
         });
     }).done(function(){
-    $('#kecamatan').DataTable();
+    $('#pengguna').DataTable();
 });
 
 $("#tambah_pengguna").click(function(){
@@ -54,3 +55,22 @@ $('#f_tambah_user').submit(function(){
     });
     return false;
 });
+
+function hapusUser(nip)
+{
+    if(confirm("Yakin akan menghapus user dengan nip "+nip+ "?"))
+    {
+        var host='api/user.php?menu=hapususer';
+        $.post( host,{ nip: nip}).done(function(){
+            alert("User dengan nip "+nip+" berhasil dihapus")
+                $("#konten").load('user.php');
+                $.getScript("js/user.js");
+        });
+
+    }
+    else
+    {
+
+    }
+
+}

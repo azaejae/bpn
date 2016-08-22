@@ -127,5 +127,22 @@ class user
         }
 
     }
+    public function hapusUser($nip)
+    {
+        $sql='DELETE FROM user WHERE nip=:nip';
+        try
+        {
+            $exe=$this->_db->prepare($sql);
+            $exe->execute(array('nip'=>$nip));
+            $pesan=array('hasil'=>'sukses','pesan'=>'User berhasil dihapus');
+            echo json_encode($pesan);
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'error','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+
+    }
 
 }

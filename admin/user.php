@@ -5,6 +5,7 @@
         <th>Nip</th>
         <th>Nama Lengkap</th>
         <th>Status</th>
+        <th>Opsi</th>
     </tr>
     </thead>
     <tbody>

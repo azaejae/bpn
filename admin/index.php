@@ -21,6 +21,7 @@ if(!isset($_SESSION['username']))
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
     <link href="css/simpleadmin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/r-2.1.0/sc-1.4.2/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css" />
@@ -138,9 +139,10 @@ if(!isset($_SESSION['username']))
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/r-2.1.0/sc-1.4.2/datatables.min.js"></script>
+<!--<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>-->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/simpleadmin.js"></script>
 <script src="js/jquery-ui.min.js"></script>
@@ -170,6 +172,7 @@ if(!isset($_SESSION['username']))
         $("#menu_berkas").click(function(){
             $("#konten").load('berkas.php');
             $.getScript("js/berkas.js");
+            $.getScript("js/bootstrap-datepicker.js");
         });
 
     });

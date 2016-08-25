@@ -30,7 +30,7 @@
         <input type="text" name="surat_ukur" class="form-control" required placeholder="Surat Ukur">
     </div>
     <div class="form-group">
-
+        <input type="text" id="tgl_surat_ukur" name="tgl_surat_ukur" class="form-control" required placeholder="Tanggal Surat Ukur">
     </div>
     <div class="form-group">
         <input type="number" name="luas" class="form-control" required placeholder="Luas">

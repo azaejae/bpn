@@ -19,4 +19,7 @@ $("#tambah_berkas").click(function(){
     // alert("jalan");
     $("#konten").load('tambah_berkas.php');
     $.getScript("js/berkas.js");
+    $.getScript("js/bootstrap-datepicker.js");
 });
+
+//$('#tgl_surat_ukur').datepicker();

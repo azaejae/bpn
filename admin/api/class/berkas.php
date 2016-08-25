@@ -304,10 +304,6 @@ class berkas
         $this->_status_pinjam = $status_pinjam;
     }
 
-    public function tambahBerkas()
-    {
-
-    }
 
     public function getDaftarBerkas()
     {
@@ -332,6 +328,45 @@ class berkas
         catch(PDOException $e)
         {
             $hasil=array('hasil'=>'error','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+    }
+
+    public function tambahBerkas()
+    {
+        $sql='
+                INSERT INTO buku_tanah(no_buku,barcode,id_desa_kel,id_loker,asal_hak,nama_pemegang_hak,jenis_hak,nomor_hak,d_i_307,d_i_208,surat_ukur,tgl_surat_ukur,luas,tgl_terbit,penerbit,penunjuk,status_pinjam)
+                VALUES(:no_buku,:barcode,:id_desa_kel,:id_loker,:asal_hak,:nama_pemegang_hak,:nomor_hak,:d_i_307,:d_i_208,:surat_ukur,:tgl_surat_ukur,:luas,:tgl_terbit,:penerbit,:penunjuk,:status_pinjam)';
+
+        try
+        {
+            $exe=$this->_db->prepare($sql);
+            $exe->execute(array(
+                'no_buku'=>$this->getNoBuku(),
+                'barcode'=>$this->getBarcode(),
+                'id_desa_kel'=>$this->getIdDesaKel(),
+                'id_loker'=>$this->getIdLoker(),
+                'asal_hak'=>$this->getAsalHak(),
+                'nama_pemegang_hak'=>$this->getNamaPemegangHak(),
+                'nomor_hak'=>$this->getNomorHak(),
+                'd_i_307'=>$this->getDI307(),
+                'd_i_208'=>$this->getDI208(),
+                'surat_ukur'=>$this->getSuratUkur(),
+                'tgl_surat_ukur'=>$this->getTanggalSuratUkur(),
+                'luas'=>$this->getLuas(),
+                'tgl_terbit'=>$this->getTanggalTerbit(),
+                'penerbit'=>$this->getPenerbit(),
+                'penunjuk'=>$this->getPenunjuk(),
+                'status_pinjam'=>$this->getStatusPinjam()
+                ));
+
+            $hasil=array('status'=>'berhasil','pesan'=>'Berkas berhasil ditambahkan');
+            echo json_encode($hasil);
+
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('status'=>'gagal','pesan'=>$e->getMessage());
             echo json_encode($hasil);
         }
     }

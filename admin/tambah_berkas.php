@@ -48,6 +48,6 @@
         <textarea class="form-control" name="penunjuk" placeholder="Penunjuk..."></textarea>
     </div>
     <div class="form-group">
-        <input type="submit" class="btn btn-primary text-right" value="Tambah Kecamatan">
+        <input type="submit" class="btn btn-primary text-right" value="Tambah Berkas">
     </div>
 </form>

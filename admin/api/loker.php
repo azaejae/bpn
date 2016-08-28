@@ -26,6 +26,10 @@ if(isset($_GET['menu']))
     {
         $loker->ubahLoker($_POST['id_loker'],$_POST['kode'],$_POST['keterangan']);
     }
+    elseif($_GET['menu']=='getlokerbykode')
+    {
+        $loker->getLokerByKode();
+    }
     else
     {
         echo "error, menu tidak ditemukan";

@@ -97,4 +97,27 @@ class desa
             echo json_encode($hasil);
         }
     }
+    public function getDesaByNama()
+    {
+        $sql="SELECT CONCAT(nama_desa_kel,' Kec. ',nama_kecamatan) AS label, id_desa_kel FROM v_desa_kecamatan";
+        if(isset($_GET['term']))
+        {
+            $nama_desa=$_GET['term'];
+            $sql="SELECT CONCAT(nama_desa_kel,' Kec. ',nama_kecamatan) AS label, id_desa_kel FROM v_desa_kecamatan WHERE nama_desa_kel LIKE '%$nama_desa%'";
+        }
+
+        try
+        {
+
+            $hasil=$this->_db->query($sql);
+            $data=$hasil->fetchAll(PDO::FETCH_ASSOC);
+            //$data=array('data'=>$data);
+            echo json_encode($data);
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'gagal','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+    }
 }

@@ -1673,5 +1673,10 @@
 $(function(){
 	var datepicker = $.fn.datepicker.noConflict();
 	$.fn.bootstrapDP = datepicker;
-	$("#tgl_surat_ukur").bootstrapDP();
+	$("#tgl_surat_ukur").bootstrapDP({
+		format: 'yyyy-mm-dd'
+	});
+	$("#tgl_terbit").bootstrapDP({
+		format: 'yyyy-mm-dd'
+	});
 });

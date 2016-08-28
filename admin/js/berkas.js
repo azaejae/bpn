@@ -22,4 +22,49 @@ $("#tambah_berkas").click(function(){
     $.getScript("js/bootstrap-datepicker.js");
 });
 
+$( "#desa" ).autocomplete({
+    source: function( request, response ) {
+        $.ajax({
+            url: "api/desa.php?menu=getdesabynama",
+            dataType: "json",
+            data: {term: request.term},
+            success: function(data) {
+                response($.map(data, function(item) {
+                    return {
+                        label: item.label,
+                        id: item.id_desa_kel
+                    };
+                }));
+            }
+        });
+    },
+    minLength: 1,
+    select: function(event, ui) {
+        $('#id_desa_kel').val(ui.item.id);
+        //$('#abbrev').val(ui.item.abbrev);
+    }
+});
+
+$( "#loker" ).autocomplete({
+    source: function( request, response ) {
+        $.ajax({
+            url: "api/loker.php?menu=getlokerbykode",
+            dataType: "json",
+            data: {term: request.term},
+            success: function(data) {
+                response($.map(data, function(item) {
+                    return {
+                        label: item.label,
+                        id: item.id_loker
+                    };
+                }));
+            }
+        });
+    },
+    minLength: 2,
+    select: function(event, ui) {
+        $('#id_loker').val(ui.item.id);
+        //$('#abbrev').val(ui.item.abbrev);
+    }
+});
 //$('#tgl_surat_ukur').datepicker();

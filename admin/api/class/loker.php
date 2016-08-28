@@ -96,4 +96,27 @@ class loker{
             echo json_encode($hasil);
         }
     }
+
+    public function getLokerByKode()
+    {
+        $sql="SELECT CONCAT(kode_loker,' ',keterangan) AS label, id_loker FROM loker";
+        if(isset($_GET['term']))
+        {
+            $kode=$_GET['term'];
+            $sql="SELECT CONCAT(kode_loker,' ',keterangan) AS label, id_loker FROM loker WHERE kode_loker LIKE '%$kode%'";
+        }
+        try
+        {
+
+            $hasil=$this->_db->query($sql);
+            $data=$hasil->fetchAll(PDO::FETCH_ASSOC);
+            //$data=array('data'=>$data);
+            echo json_encode($data);
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'gagal','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+    }
 }

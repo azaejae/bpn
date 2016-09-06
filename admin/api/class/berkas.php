@@ -305,6 +305,7 @@ class berkas
     }
 
 
+    //method Get daftar semua berkas
     public function getDaftarBerkas()
     {
         $sql='SELECT no_buku,barcode,nama_pemegang_hak,jenis_hak,nomor_hak FROM buku_tanah';
@@ -332,11 +333,46 @@ class berkas
         }
     }
 
+    //Method menambah berkas buku tanah ke database
     public function tambahBerkas()
     {
         $sql='
-                INSERT INTO buku_tanah(no_buku,barcode,id_desa_kel,id_loker,asal_hak,nama_pemegang_hak,jenis_hak,nomor_hak,d_i_307,d_i_208,surat_ukur,tgl_surat_ukur,luas,tgl_terbit,penerbit,penunjuk,status_pinjam)
-                VALUES(:no_buku,:barcode,:id_desa_kel,:id_loker,:asal_hak,:nama_pemegang_hak,:nomor_hak,:d_i_307,:d_i_208,:surat_ukur,:tgl_surat_ukur,:luas,:tgl_terbit,:penerbit,:penunjuk,:status_pinjam)';
+                INSERT INTO buku_tanah(
+                                        no_buku,
+                                        barcode,
+                                        id_desa_kel,
+                                        id_loker,
+                                        asal_hak,
+                                        nama_pemegang_hak,
+                                        jenis_hak,
+                                        nomor_hak,
+                                        d_i_307,
+                                        d_i_208,
+                                        surat_ukur,
+                                        tgl_surat_ukur,
+                                        luas,
+                                        tgl_terbit,
+                                        penerbit,
+                                        penunjuk,
+                                        status_pinjam)
+                VALUES(
+                        :no_buku,
+                        :barcode,
+                        :id_desa_kel,
+                        :id_loker,
+                        :asal_hak,
+                        :nama_pemegang_hak,
+                        :jenis_hak,
+                        :nomor_hak,
+                        :d_i_307,
+                        :d_i_208,
+                        :surat_ukur,
+                        :tgl_surat_ukur,
+                        :luas,
+                        :tgl_terbit,
+                        :penerbit,
+                        :penunjuk,
+                        :status_pinjam)';
 
         try
         {
@@ -348,6 +384,7 @@ class berkas
                 'id_loker'=>$this->getIdLoker(),
                 'asal_hak'=>$this->getAsalHak(),
                 'nama_pemegang_hak'=>$this->getNamaPemegangHak(),
+                'jenis_hak'=>$this->getJenisHak(),
                 'nomor_hak'=>$this->getNomorHak(),
                 'd_i_307'=>$this->getDI307(),
                 'd_i_208'=>$this->getDI208(),
@@ -369,6 +406,68 @@ class berkas
             $hasil=array('status'=>'gagal','pesan'=>$e->getMessage());
             echo json_encode($hasil);
         }
+    }
+
+    //method get data detail berkas buku tanah
+    public function detailBerkas($no_buku)
+    {
+        $sql="SELECT * FROM v_detail_buku_tanah WHERE no_buku='$no_buku'";
+        try
+        {
+            $exe=$this->_db->prepare($sql);
+            $exe->execute();
+            $data=$exe->fetchAll(PDO::FETCH_ASSOC);
+            if($exe->rowCount()>0)
+            {
+                $hasil=array('data'=>$data);
+                echo json_encode($hasil);
+            }
+            else
+            {
+                $pesan=array('hasil'=>'gagal','pesan'=>'Data Tidak ditemukan');
+                echo json_encode($pesan);
+            }
+
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'error','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+    }
+
+    //method cek berkas upload
+    public function cekUploadBerkas($no_buku)
+    {
+        $sql="SELECT * FROM berkas_buku_tanah WHERE no_buku='$no_buku'";
+        try
+        {
+            $exe=$this->_db->prepare($sql);
+            $exe->execute();
+            $data=$exe->fetchAll(PDO::FETCH_ASSOC);
+            if($exe->rowCount()>0)
+            {
+                $pesan=array('hasil'=>'gagal','pesan'=>'Berkas buku tanah sudah pernah diunggah');
+                echo json_encode($pesan);
+            }
+            else
+            {
+                $pesan=array('hasil'=>'berhasil','pesan'=>'Berkas buku tanah belum pernah diunggah');
+                echo json_encode($pesan);
+            }
+
+        }
+        catch(PDOException $e)
+        {
+            $hasil=array('hasil'=>'error','pesan'=>$e->getMessage());
+            echo json_encode($hasil);
+        }
+    }
+
+    //method upload berkas buku tanah
+    public function uploadBerkasBukuTanah()
+    {
+
     }
 
 }

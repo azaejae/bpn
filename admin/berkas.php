@@ -7,6 +7,7 @@
         <th>Nama Pemegang Hak</th>
         <th>Jenis Hak</th>
         <th>No. Hak</th>
+        <th>Opsi</th>
     </tr>
     </thead>
     <tbody>

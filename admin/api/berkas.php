@@ -26,11 +26,19 @@ if(isset($_GET['menu']))
         $berkas->setTanggalTerbit($_POST['tgl_terbit']);
         $berkas->setPenerbit($_POST['penerbit']);
         $berkas->setPenunjuk($_POST['penunjuk']);
-        $berkas->setStatusPinjam($_POST['status_pinjam']);
+        $berkas->setStatusPinjam(1);
 
         $berkas->tambahBerkas();
 
 
+    }
+    elseif ($_GET['menu']=='cekuploadberkas')
+    {
+        $berkas->cekUploadBerkas($_GET['no_buku']);
+    }
+    elseif($_GET['menu']=='detailberkas')
+    {
+        $berkas->detailBerkas($_GET['no_buku']);
     }
     else
     {

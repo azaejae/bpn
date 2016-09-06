@@ -45,7 +45,7 @@ $( "#nama_kec" ).autocomplete({
 });
 
 $('#f_tambah_desa').submit(function(){
-    var host='api/desa.php?menu=tambah_desa'
+    var host='api/desa.php?menu=tambah_desa';
     $.ajax({
         url : host,
         type: "POST",

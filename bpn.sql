@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2016 at 01:14 PM
+-- Generation Time: Sep 07, 2016 at 01:06 AM
 -- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -64,7 +64,8 @@ CREATE TABLE `buku_tanah` (
 --
 
 INSERT INTO `buku_tanah` (`no_buku`, `barcode`, `id_desa_kel`, `id_loker`, `asal_hak`, `nama_pemegang_hak`, `jenis_hak`, `nomor_hak`, `d_i_307`, `d_i_208`, `surat_ukur`, `tgl_surat_ukur`, `luas`, `tgl_terbit`, `penerbit`, `penunjuk`, `status_pinjam`) VALUES
-('10.05.05.07.1.00533', '02081000533', 1, 1, 'Pengakuan Hak/Penegasan Hak Bekas Tanah adat', 'Endang Mulyani', 'Milik', '533', '4392/SIS/1998', '4392/SIS/1998', '10.05.05.07.02081', '1998-02-24', 107, '1998-02-28', 'IR. WIMBO CAHYONO', 'NOMOR IDENTIFIKASI BIDANG TANAH (NIB) 10.05.02.08.02081', 1);
+('10.05.05.07.1.00533', '02081000533', 1, 1, 'Pengakuan Hak/Penegasan Hak Bekas Tanah adat', 'Endang Mulyani', 'Milik', '533', '4392/SIS/1998', '4392/SIS/1998', '10.05.05.07.02081', '1998-02-24', 107, '1998-02-28', 'IR. WIMBO CAHYONO', 'NOMOR IDENTIFIKASI BIDANG TANAH (NIB) 10.05.02.08.02081', 1),
+('3213414', '4141414134', 2, 1, 'warisan', 'rahasia ah', 'Hak Milik', '90131', '312324', '4141', 'dadasd2312', '2016-08-02', 120, '2016-08-23', 'Petugas', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -84,9 +85,9 @@ CREATE TABLE `desa_kelurahan` (
 --
 
 INSERT INTO `desa_kelurahan` (`id_desa_kel`, `id_kecamatan`, `kode`, `nama_desa_kel`) VALUES
-(1, 1, '41316', 'Sukamukti'),
+(1, 1, '03', 'Desa Tersembunyi'),
 (2, 3, '01', 'desa bebas'),
-(3, 4, '02', 'ada aja deh');
+(3, 7, '02', 'Desa pisan');
 
 -- --------------------------------------------------------
 
@@ -180,11 +181,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`nip`, `password`, `status`, `nama_lengkap`) VALUES
-('10110163', 'eb0a191797624dd3a48fa681d3061212', 1, 'Mia Septi'),
-('10110164', 'ac43724f16e9241d990427ab7c8f4228', 2, 'Sugi'),
-('10110165', 'fc613b4dfd6736a7bd268c8a0e74ed0d1c04a959f59dd74ef2874983fd443fc9', 1, 'Ahmad Zaelani Abdilah'),
-('10110166', 'fc613b4dfd6736a7bd268c8a0e74ed0d1c04a959f59dd74ef2874983fd443fc9', 2, 'widi'),
-('10110167', 'fc613b4dfd6736a7bd268c8a0e74ed0d1c04a959f59dd74ef2874983fd443fc9', 2, 'Mr. X');
+('10110163', 'eb0a191797624dd3a48fa681d3061212', 1, 'Mia Septi');
 
 -- --------------------------------------------------------
 
@@ -203,11 +200,46 @@ CREATE TABLE `v_desa_kecamatan` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `v_detail_buku_tanah`
+--
+CREATE TABLE `v_detail_buku_tanah` (
+`no_buku` char(20)
+,`barcode` varchar(15)
+,`asal_hak` varchar(500)
+,`nama_pemegang_hak` varchar(100)
+,`jenis_hak` varchar(50)
+,`nomor_hak` varchar(5)
+,`d_i_307` varchar(20)
+,`d_i_208` varchar(20)
+,`surat_ukur` varchar(100)
+,`tgl_surat_ukur` date
+,`luas` int(11)
+,`tgl_terbit` date
+,`penerbit` varchar(50)
+,`penunjuk` varchar(700)
+,`status_pinjam` int(11)
+,`nama_desa_kel` varchar(50)
+,`kode_loker` varchar(20)
+,`nama_kecamatan` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `v_desa_kecamatan`
 --
 DROP TABLE IF EXISTS `v_desa_kecamatan`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_desa_kecamatan`  AS  select `desa_kelurahan`.`id_desa_kel` AS `id_desa_kel`,`desa_kelurahan`.`id_kecamatan` AS `id_kecamatan`,`desa_kelurahan`.`kode` AS `kode_desa`,`desa_kelurahan`.`nama_desa_kel` AS `nama_desa_kel`,`kecamatan`.`kode` AS `kode`,`kecamatan`.`nama_kecamatan` AS `nama_kecamatan` from (`desa_kelurahan` join `kecamatan` on((`desa_kelurahan`.`id_kecamatan` = `kecamatan`.`id_kecamatan`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_detail_buku_tanah`
+--
+DROP TABLE IF EXISTS `v_detail_buku_tanah`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_detail_buku_tanah`  AS  select `buku_tanah`.`no_buku` AS `no_buku`,`buku_tanah`.`barcode` AS `barcode`,`buku_tanah`.`asal_hak` AS `asal_hak`,`buku_tanah`.`nama_pemegang_hak` AS `nama_pemegang_hak`,`buku_tanah`.`jenis_hak` AS `jenis_hak`,`buku_tanah`.`nomor_hak` AS `nomor_hak`,`buku_tanah`.`d_i_307` AS `d_i_307`,`buku_tanah`.`d_i_208` AS `d_i_208`,`buku_tanah`.`surat_ukur` AS `surat_ukur`,`buku_tanah`.`tgl_surat_ukur` AS `tgl_surat_ukur`,`buku_tanah`.`luas` AS `luas`,`buku_tanah`.`tgl_terbit` AS `tgl_terbit`,`buku_tanah`.`penerbit` AS `penerbit`,`buku_tanah`.`penunjuk` AS `penunjuk`,`buku_tanah`.`status_pinjam` AS `status_pinjam`,`desa_kelurahan`.`nama_desa_kel` AS `nama_desa_kel`,`loker`.`kode_loker` AS `kode_loker`,`kecamatan`.`nama_kecamatan` AS `nama_kecamatan` from (((`buku_tanah` join `desa_kelurahan` on((`buku_tanah`.`id_desa_kel` = `desa_kelurahan`.`id_desa_kel`))) join `kecamatan` on((`desa_kelurahan`.`id_kecamatan` = `kecamatan`.`id_kecamatan`))) join `loker` on((`buku_tanah`.`id_loker` = `loker`.`id_loker`))) ;
 
 --
 -- Indexes for dumped tables

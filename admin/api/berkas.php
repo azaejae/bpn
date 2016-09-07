@@ -40,6 +40,10 @@ if(isset($_GET['menu']))
     {
         $berkas->detailBerkas($_GET['no_buku']);
     }
+    elseif($_GET['menu']=='uploadberkas')
+    {
+        $berkas->uploadBerkasBukuTanah($_FILES);
+    }
     else
     {
         echo "error, menu tidak ditemukan";

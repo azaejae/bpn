@@ -465,9 +465,9 @@ class berkas
     }
 
     //method upload berkas buku tanah
-    public function uploadBerkasBukuTanah()
+    public function uploadBerkasBukuTanah($berkas)
     {
-
+        echo json_encode($berkas);
     }
 
 }

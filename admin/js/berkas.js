@@ -91,13 +91,14 @@ $('#f_tambah_berkas').submit(function(){
     }).done(function(){
         $(location).attr('href','index.php');
     });
-    alert('jalan');
+    //alert('jalan');
     return false;
 });
 
 function detail(no_buku)
 {
-    alert(no_buku);
+    id_upload = no_buku;
+    //alert(no_buku);
     $("#konten").load('detail_berkas.php');
     $.getJSON("api/berkas.php",{menu : "detailberkas",no_buku : no_buku})
         .done(function(result){
@@ -110,6 +111,7 @@ function detail(no_buku)
                 {
                     stp="Tersimpan Di Loker"
                 }
+                $("#no_buku_upload").val(no_buku);
                 $("#detail_berkas tbody").append(
                     "<tr>" +
                     "<th scope=\"row\">NO Buku</th>"+
@@ -175,9 +177,35 @@ function detail(no_buku)
 
             });
         }).done(function(){
-        alert("jalan");
+
     });
     $.getScript("js/berkas.js");
 }
 
+$("#upload_berkas").click(function () {
+    $("#konten").load('upload_berkas.php');
+    $.getScript("js/berkas.js");
+});
+
+$('#f_upload_berkas').submit(function(){
+    var host='api/berkas.php?menu=uploadberkas&no_buku='+id_upload;
+    //upload berkas
+    var formData = new FormData($('#f_upload_berkas')[0]);
+    $.ajax({
+        url: host,
+        type: 'POST',
+        data: formData,
+        dataType: "JSON",
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (result) {
+            alert('jalan');
+        }
+
+    });
+    //alert('jalan');
+    return false;
+});
 //$('#tgl_surat_ukur').datepicker();

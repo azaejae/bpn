@@ -465,9 +465,17 @@ class berkas
     }
 
     //method upload berkas buku tanah
-    public function uploadBerkasBukuTanah($berkas)
+    public function uploadBerkasBukuTanah($berkas,$no_buku)
     {
-        echo json_encode($berkas);
+        //echo json_encode($berkas);
+
+
+        for($i=0;$i<4;$i++)
+        {
+            $ex = new SplFileInfo($berkas['berkas']['name'][$i]);
+            $ex->getExtension();
+
+        }
     }
 
 }

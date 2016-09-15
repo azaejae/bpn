@@ -42,7 +42,7 @@ if(isset($_GET['menu']))
     }
     elseif($_GET['menu']=='uploadberkas')
     {
-        $berkas->uploadBerkasBukuTanah($_FILES);
+        $berkas->uploadBerkasBukuTanah($_FILES,$_GET['no_buku']);
     }
     else
     {

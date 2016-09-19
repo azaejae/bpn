@@ -468,12 +468,17 @@ class berkas
     public function uploadBerkasBukuTanah($berkas,$no_buku)
     {
         //echo json_encode($berkas);
-
+        $dir='uploads/';
 
         for($i=0;$i<4;$i++)
         {
+            $no=$i+1;
+
             $ex = new SplFileInfo($berkas['berkas']['name'][$i]);
-            $ex->getExtension();
+            $eks=$ex->getExtension();
+            $uploadname=$no_buku.'-'.$no.'.'.$eks;
+            $uploadfile=$dir.$uploadname;
+            move_uploaded_file($_FILES['berkas']['tmp_name'][$i], $uploadfile);
 
         }
     }
